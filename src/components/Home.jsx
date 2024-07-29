@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link as ScrollLink } from 'react-scroll';
+import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
 import About from './About';
 import Skills from './Skills';
 import Experience from './Experience';
@@ -54,11 +55,11 @@ const Home = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="mb-8"
           >
-            <img
-              src="/profile.JPEG"
+            {/* <img
+              src={`${process.env.PUBLIC_URL}/profile.JPEG`}
               alt="Uday Kalyan Nuthalapati"
               className="w-48 h-48 rounded-full mx-auto border-4 border-white shadow-lg"
-            />
+            /> */}
           </motion.div>
           <motion.h1
             initial={{ y: -50, opacity: 0 }}
@@ -80,7 +81,7 @@ const Home = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.9 }}
-            className="space-x-4"
+            className="space-x-4 mb-8"
           >
             <ScrollLink
               to="about"
@@ -99,36 +100,79 @@ const Home = () => {
               Contact Me
             </ScrollLink>
           </motion.div>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 1.1 }}
+            className="flex justify-center space-x-6"
+          >
+            <a href="https://github.com/UdayKalyanN" target="_blank" rel="noopener noreferrer" className="text-white hover:text-blue-200">
+              <FaGithub size={24} />
+            </a>
+            <a href="https://www.linkedin.com/in/udaykalyannuthalapati/" target="_blank" rel="noopener noreferrer" className="text-white hover:text-blue-200">
+              <FaLinkedin size={24} />
+            </a>
+            <a href="mailto:udaykalyannuthalapati1999@gmail.com" className="text-white hover:text-blue-200">
+              <FaEnvelope size={24} />
+            </a>
+          </motion.div>
         </div>
       </motion.section>
 
       <Divider />
 
-      <Section id="about" bgColor="bg-white">
+      <Section id="quick-intro" bgColor="bg-white">
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="text-3xl font-bold mb-6">Welcome to My Portfolio</h2>
+          <p className="text-lg mb-8">
+            I'm a passionate Full-Stack Developer with expertise in Java and modern web technologies. 
+            With a strong foundation in computer science and hands-on experience in the industry, 
+            I bring a unique blend of theoretical knowledge and practical skills to every project I undertake.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="bg-blue-100 p-6 rounded-lg">
+              <h3 className="text-xl font-semibold mb-2">Frontend Development</h3>
+              <p>Creating responsive and intuitive user interfaces using React and modern CSS frameworks.</p>
+            </div>
+            <div className="bg-purple-100 p-6 rounded-lg">
+              <h3 className="text-xl font-semibold mb-2">Backend Development</h3>
+              <p>Building robust server-side applications with Java, Spring Boot, and RESTful APIs.</p>
+            </div>
+            <div className="bg-green-100 p-6 rounded-lg">
+              <h3 className="text-xl font-semibold mb-2">Database Management</h3>
+              <p>Designing and optimizing database systems using SQL and NoSQL technologies.</p>
+            </div>
+          </div>
+        </div>
+      </Section>
+
+      <Divider />
+
+      <Section id="about" bgColor="bg-gray-100">
         <About />
       </Section>
 
       <Divider />
 
-      <Section id="skills" bgColor="bg-gray-100">
+      <Section id="skills" bgColor="bg-white">
         <Skills />
       </Section>
 
       <Divider />
 
-      <Section id="experience" bgColor="bg-white">
+      <Section id="experience" bgColor="bg-gray-100">
         <Experience />
       </Section>
 
       <Divider />
 
-      <Section id="projects" bgColor="bg-gray-100">
+      <Section id="projects" bgColor="bg-white">
         <Projects />
       </Section>
 
       <Divider />
 
-      <Section id="contact" bgColor="bg-white">
+      <Section id="contact" bgColor="bg-gray-100">
         <Contact />
       </Section>
     </div>

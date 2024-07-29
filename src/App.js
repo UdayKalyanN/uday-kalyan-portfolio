@@ -4,6 +4,35 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Link as ScrollLink } from 'react-scroll';
 import Home from './components/Home';
 
+const AnimatedLogo = () => (
+  <Link to="/" className="text-2xl font-bold text-blue-600 flex items-center">
+    <motion.span
+      className="inline-block"
+      initial={{ rotate: 0 }}
+      animate={{ rotate: 360 }}
+      transition={{ duration: 0.5, ease: "easeInOut" }}
+    >
+      U
+    </motion.span>
+    <motion.span
+      className="inline-block"
+      initial={{ y: -20, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ delay: 0.2, duration: 0.5 }}
+    >
+      K
+    </motion.span>
+    <motion.span
+      className="inline-block"
+      initial={{ scale: 0 }}
+      animate={{ scale: 1 }}
+      transition={{ delay: 0.4, duration: 0.5, type: "spring" }}
+    >
+      N
+    </motion.span>
+  </Link>
+);
+
 const App = () => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -12,7 +41,7 @@ const App = () => {
       <div className="min-h-screen bg-gray-100 text-gray-900">
         <nav className="bg-white text-gray-800 shadow-md sticky top-0 z-50">
           <div className="container mx-auto px-4 py-3 flex justify-between items-center">
-            <Link to="/" className="text-2xl font-bold text-blue-600">UKN</Link>
+            <AnimatedLogo />
             <div className="hidden md:flex space-x-6">
               <NavLink to="hero">Home</NavLink>
               <NavLink to="about">About</NavLink>
