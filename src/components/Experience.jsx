@@ -59,18 +59,19 @@ const experienceData = [
 
 const ExperienceItem = ({ experience, index }) => (
   <motion.div 
-    className="mb-12 overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition duration-300 bg-white"
+    className="mb-12 overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition duration-300 bg-[#444444] font-[Verdana]"
     initial={{ opacity: 0, y: 50 }}
     animate={{ opacity: 1, y: 0 }}
     transition={{ delay: index * 0.1, duration: 0.5 }}
+    whileHover={{ y: -5 }}
   >
-    <div className="bg-gradient-to-r from-blue-600 to-purple-600 p-6 text-white">
+    <div className="p-6 text-[#f5f5dc] border-b border-[#f5f5dc]/10">
       <div className="flex items-center mb-4">
         {experience.company === "University of North Texas" ? (
-          <FaChalkboardTeacher className="w-16 h-16 mr-4 text-white" />
+          <FaChalkboardTeacher className="w-16 h-16 mr-4 text-[#f5f5dc]" />
         ) : (
-          <div className="w-16 h-16 mr-4 bg-white rounded-full flex items-center justify-center">
-            <FaBriefcase className="w-8 h-8 text-blue-600" />
+          <div className="w-16 h-16 mr-4 bg-[#f5f5dc] rounded-full flex items-center justify-center">
+            <FaBriefcase className="w-8 h-8 text-[#444444]" />
           </div>
         )}
         <div>
@@ -87,13 +88,14 @@ const ExperienceItem = ({ experience, index }) => (
         </div>
       </div>
     </div>
-    <div className="p-6">
-      <p className="text-gray-700 mb-6 italic">{experience.description}</p>
+
+    <div className="p-6 text-[#f5f5dc]">
+      <p className="mb-6 italic opacity-90">{experience.description}</p>
       
       {experience.importantPoints && (
         <>
-          <h5 className="font-semibold text-lg mb-3 text-blue-600 flex items-center">
-            <FaTrophy className="mr-2" />
+          <h5 className="font-semibold text-lg mb-3 text-[#f5f5dc] flex items-center">
+            <FaTrophy className="mr-2 text-yellow-300" />
             Key Achievements:
           </h5>
           <ul className="space-y-2 mb-6">
@@ -105,15 +107,15 @@ const ExperienceItem = ({ experience, index }) => (
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.2 + index * 0.1 }}
               >
-                <FaLightbulb className="w-5 h-5 text-yellow-500 mr-2 mt-1 flex-shrink-0" />
-                <span className="text-gray-800 font-medium">{point}</span>
+                <FaLightbulb className="w-5 h-5 text-yellow-300 mr-2 mt-1 flex-shrink-0" />
+                <span className="font-medium opacity-90">{point}</span>
               </motion.li>
             ))}
           </ul>
         </>
       )}
 
-      <h5 className="font-semibold text-lg mb-3 text-blue-600 flex items-center">
+      <h5 className="font-semibold text-lg mb-3 text-[#f5f5dc] flex items-center">
         <FaTasks className="mr-2" />
         Responsibilities & Technical Contributions:
       </h5>
@@ -126,15 +128,15 @@ const ExperienceItem = ({ experience, index }) => (
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.4 + index * 0.1 }}
           >
-            <svg className="w-5 h-5 text-green-500 mr-2 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <svg className="w-5 h-5 text-[#f5f5dc] mr-2 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
             </svg>
-            <span className="text-gray-700">{highlight}</span>
+            <span className="opacity-90">{highlight}</span>
           </motion.li>
         ))}
       </ul>
       
-      <h5 className="font-semibold text-lg mb-3 text-blue-600 flex items-center">
+      <h5 className="font-semibold text-lg mb-3 text-[#f5f5dc] flex items-center">
         <FaTools className="mr-2" />
         Skills & Technologies:
       </h5>
@@ -142,12 +144,13 @@ const ExperienceItem = ({ experience, index }) => (
         {experience.skills.map((skill, index) => (
           <motion.span 
             key={index} 
-            className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm mr-2 mb-2 flex items-center"
+            className="bg-[#f5f5dc] text-[#444444] px-3 py-1 rounded-full text-sm mr-2 mb-2 flex items-center"
             initial={{ opacity: 0, scale: 0 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.6 + index * 0.05 }}
+            whileHover={{ scale: 1.05 }}
           >
-            <span className="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
+            <span className="w-2 h-2 bg-[#444444] rounded-full mr-2"></span>
             {skill}
           </motion.span>
         ))}
@@ -158,10 +161,10 @@ const ExperienceItem = ({ experience, index }) => (
 
 const Experience = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 py-16">
+    <div className="min-h-screen bg-[#f5f5dc] py-16 font-[Verdana]">
       <div className="container mx-auto px-4">
         <motion.h2 
-          className="text-4xl font-bold mb-12 text-center text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 flex items-center justify-center"
+          className="text-4xl font-bold mb-12 text-center text-[#444444] flex items-center justify-center"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
@@ -169,9 +172,15 @@ const Experience = () => {
           <FaBriefcase className="mr-4" />
           Work Experience
         </motion.h2>
-        {experienceData.map((exp, index) => (
-          <ExperienceItem key={index} experience={exp} index={index} />
-        ))}
+
+        {/* Timeline Line */}
+        <div className="relative">
+          <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-0.5 bg-[#444444]/20"></div>
+          
+          {experienceData.map((exp, index) => (
+            <ExperienceItem key={index} experience={exp} index={index} />
+          ))}
+        </div>
       </div>
     </div>
   );

@@ -11,16 +11,18 @@
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
-    "framer-motion": "^11.3.19",
+    "framer-motion": "^11.11.10",
     "nodemailer": "^6.9.14",
     "postcss": "^8.4.40",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-icons": "^5.2.1",
-    "react-router-dom": "^6.25.1",
+    "react-icons": "^5.3.0",
+    "react-router-dom": "^6.26.2",
     "react-scripts": "^5.0.1",
     "react-scroll": "^1.9.0",
-    "tailwindcss": "^3.4.7",
+    "react-tsparticles": "^2.12.2",
+    "tailwindcss": "^3.4.14",
+    "tsparticles": "^3.5.0",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -59,4 +61,3 @@
   },
   "homepage": "https://udaykalyann.github.io/uday-kalyan-portfolio"
 }
-
