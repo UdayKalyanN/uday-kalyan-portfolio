@@ -1,6 +1,7 @@
+// Contact.jsx
 import { motion } from 'framer-motion';
 import React, { useState } from 'react';
-
+import { FaEnvelope, FaGithub, FaLinkedin } from 'react-icons/fa';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -9,86 +10,131 @@ const Contact = () => {
     message: ''
   });
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Here you would typically handle the form submission, e.g., send an email or save to a database
+    // Add your form submission logic here
+    alert("Thanks for reaching out!")
     console.log('Form submitted:', formData);
-    alert('Thank you for your message! I will get back to you soon.');
+    // Reset form
     setFormData({ name: '', email: '', message: '' });
   };
 
+  const socialLinks = [
+    {
+      icon: FaGithub,
+      href: "https://github.com/UdayKalyanN",
+      label: "GitHub"
+    },
+    {
+      icon: FaLinkedin,
+      href: "https://www.linkedin.com/in/uday-kalyan-nuthalapati/",
+      label: "LinkedIn"
+    },
+    {
+      icon: FaEnvelope,
+      href: "mailto:udaykalyannuthalapati1999@gmail.com",
+      label: "Email"
+    }
+  ];
+
   return (
-    <div className="min-h-screen bg-gray-100 py-16">
-      <div className="container mx-auto px-4">
-        <motion.h2 
-          className="text-4xl font-bold mb-12 text-center text-primary"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          Contact Me
-        </motion.h2>
-        <motion.div 
-          className="max-w-md mx-auto bg-white rounded-lg shadow-lg overflow-hidden"
+    <section id="contact" className="section bg-surface-dark">
+      <div className="container max-w-4xl">
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2, duration: 0.5 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-12"
         >
-          <div className="p-6">
-            <form onSubmit={handleSubmit}>
-              <div className="mb-4">
-                <label htmlFor="name" className="block text-gray-700 font-bold mb-2">Name</label>
-                <input 
-                  type="text" 
-                  id="name" 
-                  name="name" 
-                  value={formData.name} 
-                  onChange={handleChange} 
-                  className="w-full px-3 py-2 text-gray-700 border rounded-lg focus:outline-none focus:border-primary" 
-                  required 
+          <h2 className="text-3xl font-bold mb-6">Get In Touch</h2>
+          <p className="text-secondary">
+            I'm currently open to new opportunities and collaborations
+          </p>
+        </motion.div>
+
+        <div className="grid md:grid-cols-2 gap-8">
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+          >
+            <h3 className="text-xl font-semibold mb-4">Contact Information</h3>
+            <p className="text-secondary mb-6">
+              Feel free to reach out through any of these channels or use the contact form.
+            </p>
+            
+            <div className="space-y-4">
+              {socialLinks.map((link, index) => (
+                <a
+                  key={index}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center text-secondary hover:text-accent transition-colors"
+                >
+                  <link.icon className="w-5 h-5 mr-3" />
+                  <span>{link.label}</span>
+                </a>
+              ))}
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+          >
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div>
+                <label htmlFor="name" className="block text-primary font-medium mb-1">
+                  Name
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  value={formData.name}
+                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  className="w-full text-black px-4 py-2 rounded-lg border border-primary/20 focus:outline-none focus:border-accent"
+                  required
                 />
               </div>
-              <div className="mb-4">
-                <label htmlFor="email" className="block text-gray-700 font-bold mb-2">Email</label>
-                <input 
-                  type="email" 
-                  id="email" 
-                  name="email" 
-                  value={formData.email} 
-                  onChange={handleChange} 
-                  className="w-full px-3 py-2 text-gray-700 border rounded-lg focus:outline-none focus:border-primary" 
-                  required 
+              
+              <div>
+                <label htmlFor="email" className="block text-primary font-medium mb-1">
+                  Email
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  value={formData.email}
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  className="w-full text-black px-4 py-2 rounded-lg border border-primary/20 focus:outline-none focus:border-accent"
+                  required
                 />
               </div>
-              <div className="mb-4">
-                <label htmlFor="message" className="block text-gray-700 font-bold mb-2">Message</label>
-                <textarea 
-                  id="message" 
-                  name="message" 
-                  value={formData.message} 
-                  onChange={handleChange} 
-                  rows="4" 
-                  className="w-full px-3 py-2 text-gray-700 border rounded-lg focus:outline-none focus:border-primary" 
+              
+              <div>
+                <label htmlFor="message" className="block text-primary font-medium mb-1">
+                  Message
+                </label>
+                <textarea
+                  id="message"
+                  value={formData.message}
+                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                  rows="4"
+                  className="w-full text-black px-4 py-2 rounded-lg border border-primary/20 focus:outline-none focus:border-accent"
                   required
                 ></textarea>
               </div>
-              <div className="text-center">
-                <button 
-                  type="submit" 
-                  className="bg-primary text-white px-6 py-3 rounded-full text-lg hover:bg-secondary transition duration-300"
-                >
-                  Send Message
-                </button>
-              </div>
+              
+              <button type="submit" className="button-primary w-full">
+                Send Message
+              </button>
             </form>
-          </div>
-        </motion.div>
+          </motion.div>
+        </div>
       </div>
-    </div>
+    </section>
   );
 };
 
